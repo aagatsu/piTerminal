@@ -17,7 +17,7 @@ int main(){
 
         if (strcmp(comando, "sair"))
             return EXIT_FAILURE;
-
+aaaaaaaa
         else if(strcmp(comando, "cat"))
     }
 }   
