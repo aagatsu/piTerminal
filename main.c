@@ -14,8 +14,10 @@ int main(){
 
     while (TRUE){
         fgets(comando, sizeof(comando), stdin);
-        
+
         if (strcmp(comando, "sair"))
             return EXIT_FAILURE;
+
+        else if(strcmp(comando, "cat"))
     }
 }   
