@@ -5,7 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 #define TAM 256
-
+// teste
 void cmd_ajuda(){
 
 }
