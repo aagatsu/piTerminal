@@ -130,6 +130,22 @@ void cmd_cat(){
 
 }
 
+void juntar_nome(char destino[], char nome[], char sufixo[]) {
+    int i = 0;
+    int j;
+
+    for (j = 0; nome[j] != '\0'; j++) {
+        destino[i] = nome[j];
+        i++;
+    }
+    for (j = 0; sufixo[j] != '\0'; j++) {
+        destino[i] = sufixo[j];
+        i++;
+    }
+    destino[i] = '\0';
+}
+
+
 void cmd_cesar(){
 
 }
