@@ -6,6 +6,8 @@
 #define FALSE 0
 #define TAM 256
 
+// teste commit 
+
 char linha[TAM];
 int pos;
 
