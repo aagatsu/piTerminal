@@ -6,6 +6,76 @@
 #define FALSE 0
 #define TAM 256
 
+char linha[TAM];
+int pos;
+
+int iguais(char a[], char b[]){
+    int i = 0;
+    while(a[i] == b[i]){
+        if(a[i] == '\0'){
+            return 1;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int ler_linha(){
+    int letra;
+    int i = 0;
+
+    letra = getchar();
+    if(letra == EOF){
+        return 0;
+    }
+    while(letra != '\n' && letra != EOF){
+        if(i < TAM - 1){
+            linha[i] = letra;
+            i++;
+        }
+        letra = getchar();
+    }
+    linha[i] = '\0';
+    return 1;
+}
+
+int ler_palavra(char destino[]){
+    char fim = ' ';
+    int j = 0;
+
+    while(linha[pos] == ' '){
+        pos++;
+    }
+    if(linha[pos] == '\0'){
+        destino[0] = '\0';
+        return 0;
+    }
+    if (linha[pos] == '"') {
+        fim = '"';
+        pos++;
+    }
+    while (linha[pos] != '\0' && linha[pos] != fim) {
+        destino[j] = linha[pos];
+        pos++;
+        j++;
+    }
+    if (linha[pos] == fim) {
+        pos++;
+    }
+    destino[j] = '\0';
+    return 1;
+}
+
+int tem_barra(char nome[]) {
+    int i;
+    for (i = 0; nome[i] != '\0'; i++) {
+        if (nome[i] == '/' || nome[i] == '\\') {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void cmd_ajuda(){
 
 }
