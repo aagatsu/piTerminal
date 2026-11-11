@@ -6,6 +6,39 @@
 #define FALSE 0
 #define TAM 256
 
+char linha[TAM];
+int pos;
+
+int iguais(char a[], char b[]){
+    int i = 0;
+    while(a[i] == b[i]){
+        if(a[i] == '\0'){
+            return 1;
+        }
+        i++;
+    }
+    return 0;
+}
+
+int ler_linha(){
+    int letra;
+    int i = 0;
+
+    letra = getchar();
+    if(letra == EOF){
+        return 0;
+    }
+    while(letra != '\n' && letra != EOF){
+        if(i < TAM - 1){
+            linha[i] = letra;
+            i++;
+        }
+        letra = getchar();
+    }
+    linha[i] = '\0';
+    return 1;
+}
+
 void cmd_ajuda(){
 
 }
