@@ -14,9 +14,47 @@ void cmd_ec(){
 
 }
 
-void cmd_criar(){
+void cmd_criar()
+{
+    FILE *arquivo;
+    char nome[TAM];
+    char palavra [TAM];
 
-}
+    if (ler_palavra(nome) == 0 || nome[0] == '\0')
+    {
+        printf("Erro: nome do arquivo vazio. Uso: criar <arquivo> <texto>\n");
+        return;
+    }
+
+    if (tem_barra(nome) == 1)
+    {
+        printf("Erro: o nome nome nao pode conter barras. \n");
+        return;
+    }
+    
+    if(ler_palavra(palavra) == 0)
+    {
+        printf("Erro: texto ausente. Uso: criar <arquivo> <texto>\n");
+        return;
+    }
+
+    arquivo = fopen(nome, "w");
+    {
+        if(arquivo == NULL) {
+            printf("Erro: falha ao escrever arquivo %s.\n", nome);
+            return;
+        }
+    }
+    
+    fprintf(arquivo, "%s", palavra);
+    while (ler_palavra(palavra) == 1)
+    {
+        fprintf(arquivo, "%s",palavra);
+    }
+    
+    fclose(arquivo);
+    printf("Arquivo %s criado. \n", nome);
+}   
 
 void cmd_cat(){
 
