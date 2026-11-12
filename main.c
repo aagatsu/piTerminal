@@ -149,6 +149,7 @@ void cmd_cat(){
     printf("\n");
 
 }
+
 char deslocar_letra(char c, int deslocamento) {
     if (c >= 'A' && c <= 'Z') {
         return 'A' + (c - 'A' + deslocamento) % 26;
@@ -157,6 +158,7 @@ char deslocar_letra(char c, int deslocamento) {
         return 'a' + (c - 'a' + deslocamento) % 26;
     }
     return c;
+}
 
 int converter_numero(char texto[]) {
     int resultado = 0;
@@ -174,7 +176,6 @@ int converter_numero(char texto[]) {
     return resultado;
 }
 
-
 void juntar_nome(char destino[], char nome[], char sufixo[]) {
     int i = 0;
     int j;
@@ -190,6 +191,37 @@ void juntar_nome(char destino[], char nome[], char sufixo[]) {
     destino[i] = '\0';
 }
 
+void cesar_arquivo(char nome[], int deslocamento, int decifrar) {
+    FILE *entrada;
+    FILE *saida;
+    char nome_saida[300];
+    int letra;
+
+    entrada = fopen(nome, "r");
+    if (entrada == NULL) {
+        printf("Erro: arquivo nao encontrado.\n");
+        return;
+    }
+    if (decifrar == 1) {
+        juntar_nome(nome_saida, nome, ".decifrado");
+    } else {
+        juntar_nome(nome_saida, nome, ".cifrado");
+    }
+    saida = fopen(nome_saida, "w");
+    if (saida == NULL) {
+        printf("Erro: nao foi possivel criar %s.\n", nome_saida);
+        fclose(entrada);
+        return;
+    }
+    letra = fgetc(entrada);
+    while (letra != EOF) {
+        fputc(deslocar_letra(letra, deslocamento), saida);
+        letra = fgetc(entrada);
+    }
+    fclose(entrada);
+    fclose(saida);
+    printf("Resultado gravado em %s\n", nome_saida);
+}
 
 void cmd_cesar(){
     char operacao[TAM];
