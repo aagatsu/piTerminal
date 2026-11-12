@@ -121,12 +121,32 @@ void cmd_criar()
     {
         fprintf(arquivo, "%s",palavra);
     }
-    
+
     fclose(arquivo);
     printf("Arquivo %s criado. \n", nome);
 }   
 
 void cmd_cat(){
+    FILE *arquivo;
+    char nome[TAM];
+    int letra;
+
+    if (ler_palavra(nome) == 0) {
+        printf("Erro: falta o nome do arquivo. Uso: cat <arquivo>\n");
+        return;
+    }
+    arquivo = fopen(nome, "r");
+    if (arquivo == NULL) {
+        printf("arquivo nao encontrado\n");
+        return;
+    }
+    letra = fgetc(arquivo);
+    while (letra != EOF) {
+        printf("%c", letra);
+        letra = fgetc(arquivo);
+    }
+    fclose(arquivo);
+    printf("\n");
 
 }
 char deslocar_letra(char c, int deslocamento) {
