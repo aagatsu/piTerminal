@@ -129,7 +129,15 @@ void cmd_criar()
 void cmd_cat(){
 
 }
-
+char deslocar_letra(char c, int deslocamento) {
+    if (c >= 'A' && c <= 'Z') {
+        return 'A' + (c - 'A' + deslocamento) % 26;
+    }
+    if (c >= 'a' && c <= 'z') {
+        return 'a' + (c - 'a' + deslocamento) % 26;
+    }
+    return c;
+}
 void juntar_nome(char destino[], char nome[], char sufixo[]) {
     int i = 0;
     int j;
