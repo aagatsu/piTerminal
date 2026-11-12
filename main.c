@@ -183,7 +183,36 @@ void cmd_cesar(){
     tem_desl  = ler_palavra(desl_texto);
     tem_sobra = ler_palavra(sobra);
 
-    
+    if (tem_modo == 0 || tem_alvo == 0 || tem_desl == 0 || tem_sobra == 1) {
+        printf("Erro: numero de argumentos incorreto.\n");
+        printf("Uso: cesar %s -t \"texto\" <deslocamento>\n", operacao);
+        printf("     (texto com espacos deve ficar entre aspas)\n");
+        return;
+    }
+
+    if (iguais(modo, "-t") == 0 && iguais(modo, "-f") == 0) {
+        printf("Erro: use -t (texto) ou -f (arquivo).\n");
+        return;
+    }
+
+    deslocamento = converter_numero(desl_texto);
+    if (deslocamento < 0 || deslocamento > 25) {
+        printf("Erro: deslocamento deve ser um numero de 0 a 25.\n");
+        return;
+    }
+
+    if (decifrar == 1) {
+        deslocamento = (26 - deslocamento) % 26;
+    }
+
+    if (iguais(modo, "-t") == 1) {
+        for (i = 0; alvo[i] != '\0'; i++) {
+            printf("%c", deslocar_letra(alvo[i], deslocamento));
+        }
+        printf("\n");
+    } else {
+        cesar_arquivo(alvo, deslocamento, decifrar);
+    }
 }
 
 int main(){
