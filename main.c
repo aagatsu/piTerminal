@@ -109,8 +109,18 @@ void cmd_ajuda(void) {
     }
 }
 
-void cmd_ec(){
+void cmd_ec(void) {
+    char palavra[TAM];
 
+    if (ler_palavra(palavra) == 0) {
+        printf("Erro: falta o texto. Uso: ec <texto>\n");
+        return;
+    }
+    printf("%s", palavra);
+    while (ler_palavra(palavra) == 1) {
+        printf(" %s", palavra);
+    }
+    printf("\n");
 }
 
 void cmd_criar()
