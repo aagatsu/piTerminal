@@ -147,7 +147,35 @@ void juntar_nome(char destino[], char nome[], char sufixo[]) {
 
 
 void cmd_cesar(){
+    char operacao[TAM];
+    char modo[TAM];
+    char alvo[TAM];
+    char desl_texto[TAM];
+    char sobra[TAM];
+    int tem_modo, tem_alvo, tem_desl, tem_sobra;
+    int decifrar;
+    int deslocamento;
+    int i;
 
+    if(ler_palavra(operacao) == 0){
+        printf("Erro: use 'cesar cifrar' ou 'cesar decifrar'.\n");
+        return;
+    }
+    if (iguais(operacao, "cifrar") == 1) {
+        decifrar = 0;
+    } else if (iguais(operacao, "decifrar") == 1) {
+        decifrar = 1;
+    } else {
+        printf("Erro: use 'cesar cifrar' ou 'cesar decifrar'.\n");
+        return;
+    }
+
+    tem_modo  = ler_palavra(modo);
+    tem_alvo  = ler_palavra(alvo);
+    tem_desl  = ler_palavra(desl_texto);
+    tem_sobra = ler_palavra(sobra);
+
+    
 }
 
 int main(){
