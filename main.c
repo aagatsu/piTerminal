@@ -76,8 +76,37 @@ int tem_barra(char nome[]) {
     return 0;
 }
 
-void cmd_ajuda(){
+void cmd_ajuda(void) {
+    char nome[TAM];
 
+    if (ler_palavra(nome) == 0) {
+        printf("Comandos disponiveis:\n");
+        printf("  ajuda [comando]    lista os comandos ou explica um comando\n");
+        printf("  sair               encerra o terminal\n");
+        printf("  ec <texto>         repete o texto na tela\n");
+        printf("  criar <arq> <txt>  cria um arquivo com o texto\n");
+        printf("  cat <arq>          mostra o conteudo de um arquivo\n");
+        printf("  cesar cifrar       cifra com a cifra de Cesar\n");
+        printf("  cesar decifrar     decifra com a cifra de Cesar\n");
+    } else if (iguais(nome, "ajuda") == 1) {
+        printf("Sintaxe: ajuda ou ajuda <comando>\nExemplo: ajuda cesar\n");
+    } else if (iguais(nome, "sair") == 1) {
+        printf("Sintaxe: sair\nExemplo: sair\n");
+    } else if (iguais(nome, "ec") == 1) {
+        printf("Sintaxe: ec <texto>\nExemplo: ec ola mundo\n");
+    } else if (iguais(nome, "criar") == 1) {
+        printf("Sintaxe: criar <arquivo> <texto>\nExemplo: criar msg.txt def\n");
+    } else if (iguais(nome, "cat") == 1) {
+        printf("Sintaxe: cat <arquivo>\nExemplo: cat msg.txt\n");
+    } else if (iguais(nome, "cesar") == 1) {
+        printf("Sintaxe: cesar cifrar -t <texto> <deslocamento>\n");
+        printf("         cesar cifrar -f <arquivo> <deslocamento>\n");
+        printf("         cesar decifrar -t <texto> <deslocamento>\n");
+        printf("         cesar decifrar -f <arquivo> <deslocamento>\n");
+        printf("O deslocamento vai de 0 a 25.\nExemplo: cesar cifrar -t ABC 3\n");
+    } else {
+        printf("Comando desconhecido: %s\n", nome);
+    }
 }
 
 void cmd_ec(){
