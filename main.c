@@ -137,7 +137,24 @@ char deslocar_letra(char c, int deslocamento) {
         return 'a' + (c - 'a' + deslocamento) % 26;
     }
     return c;
+
+int converter_numero(char texto[]) {
+    int resultado = 0;
+    int i;
+
+    for (i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] < '0' || texto[i] > '9' || i >= 2) {
+            return -1;
+        }
+        resultado = resultado * 10 + (texto[i] - '0');
+    }
+    if (i == 0) {
+        return -1;
+    }
+    return resultado;
 }
+
+
 void juntar_nome(char destino[], char nome[], char sufixo[]) {
     int i = 0;
     int j;
