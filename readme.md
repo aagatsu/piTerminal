@@ -18,7 +18,7 @@ O programa mostra um prompt, lê o que o usuário digita, interpreta a linha com
 É preciso ter o `gcc` instalado. O código usa apenas a biblioteca padrão `stdio.h`.
 
 ```
-gcc -Wall -Wextra -o terminal terminal.c
+gcc main.c -o main
 ```
 
 ## Uso
