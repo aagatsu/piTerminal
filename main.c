@@ -369,7 +369,7 @@ int main(){
         } else if (iguais(comando, "cesar") == 1) {
             cmd_cesar();
         } else {
-            printf("Comando desconhecido: %s (digite ajuda)\n", comando);
+            printf(COR_AMARELO "Comando desconhecido: %s (digite ajuda)\n" COR_RESET, comando);
         }
     }
     return 0;
