@@ -9,7 +9,7 @@
 #define COR_CIANO   "\033[1;36m"
 #define COR_AMARELO "\033[1;33m"
 #define COR_VERMELHO "\033[1;31m"
-#define COR_ROXO " \033[1;45m"
+#define COR_ROXO " \033[35m"
 
 char linha[TAM];
 int pos;
