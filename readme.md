@@ -1,4 +1,4 @@
-# README Terminal PI II
+# Terminal PI II
 
 Terminal desenvolvido em linguagem C, feito para o Projeto Integrador II (Cibersegurança e Criptografia), PUC-Campinas.
 
