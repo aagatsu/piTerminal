@@ -7,10 +7,10 @@ O programa mostra um prompt, lê o que o usuário digita, interpreta a linha com
 ## Integrantes
 
 - Ana Lúcia Eller Sano - RA: 26026041 (NALUzy)
-- Ana Carolina Dias - RA: (anadsvieira)
+- Ana Carolina Dias - RA: 26028667 (anadsvieira)
 - Emile Cristine - RA: 26892562 (EmileCristine)
-- Gustavo - RA: (aagatsu)
-- João Carlin - RA: (joaocarlin-ds)
+- Gustavo - RA: 26891432 (aagatsu)
+- João Carlin - RA: 26004347 (joaocarlin-ds)
 - Thamize Muniz Bueno - RA: 26027163 (muniztb)
 
 ## Compilação
