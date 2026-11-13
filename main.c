@@ -2,6 +2,14 @@
 
 #define TAM 256
 
+// Definição de cores para o menu
+
+#define COR_RESET   "\033[0m"
+#define COR_VERDE   "\033[1;32m"
+#define COR_CIANO   "\033[1;36m"
+#define COR_AMARELO "\033[1;33m"
+#define COR_VERMELHO "\033[1;31m"
+
 char linha[TAM];
 int pos;
 
@@ -76,32 +84,38 @@ void cmd_ajuda(void) {
     char nome[TAM];
 
     if (ler_palavra(nome) == 0) {
-        printf("Comandos disponiveis:\n");
-        printf("  ajuda [comando]    lista os comandos ou explica um comando\n");
-        printf("  sair               encerra o terminal\n");
-        printf("  ec <texto>         repete o texto na tela\n");
-        printf("  criar <arq> <txt>  cria um arquivo com o texto\n");
-        printf("  cat <arq>          mostra o conteudo de um arquivo\n");
-        printf("  cesar cifrar       cifra com a cifra de Cesar\n");
-        printf("  cesar decifrar     decifra com a cifra de Cesar\n");
+        printf(COR_VERDE "Comandos disponiveis:\n" COR_RESET);
+        printf("  " COR_CIANO "ajuda" COR_RESET " [comando]    lista os comandos ou explica um comando\n");
+        printf("  " COR_CIANO "sair" COR_RESET "               encerra o terminal\n");
+        printf("  " COR_CIANO "ec" COR_RESET " <texto>         repete o texto na tela\n");
+        printf("  " COR_CIANO "criar" COR_RESET " <arq> <txt>  cria um arquivo com o texto\n");
+        printf("  " COR_CIANO "cat" COR_RESET " <arq>          mostra o conteudo de um arquivo\n");
+        printf("  " COR_CIANO "cesar cifrar" COR_RESET "       cifra com a cifra de Cesar\n");
+        printf("  " COR_CIANO "cesar decifrar" COR_RESET "     decifra com a cifra de Cesar\n");
     } else if (iguais(nome, "ajuda") == 1) {
-        printf("Sintaxe: ajuda ou ajuda <comando>\nExemplo: ajuda cesar\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " ajuda ou ajuda <comando>\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " ajuda cesar\n");
     } else if (iguais(nome, "sair") == 1) {
-        printf("Sintaxe: sair\nExemplo: sair\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " sair\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " sair\n");
     } else if (iguais(nome, "ec") == 1) {
-        printf("Sintaxe: ec <texto>\nExemplo: ec ola mundo\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " ec <texto>\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " ec ola mundo\n");
     } else if (iguais(nome, "criar") == 1) {
-        printf("Sintaxe: criar <arquivo> <texto>\nExemplo: criar msg.txt def\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " criar <arquivo> <texto>\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " criar msg.txt def\n");
     } else if (iguais(nome, "cat") == 1) {
-        printf("Sintaxe: cat <arquivo>\nExemplo: cat msg.txt\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " cat <arquivo>\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " cat msg.txt\n");
     } else if (iguais(nome, "cesar") == 1) {
-        printf("Sintaxe: cesar cifrar -t <texto> <deslocamento>\n");
+        printf(COR_VERDE "Sintaxe:" COR_RESET " cesar cifrar -t <texto> <deslocamento>\n");
         printf("         cesar cifrar -f <arquivo> <deslocamento>\n");
         printf("         cesar decifrar -t <texto> <deslocamento>\n");
         printf("         cesar decifrar -f <arquivo> <deslocamento>\n");
-        printf("O deslocamento vai de 0 a 25.\nExemplo: cesar cifrar -t ABC 3\n");
+        printf("O deslocamento vai de " COR_CIANO "0 a 25" COR_RESET ".\n");
+        printf(COR_AMARELO "Exemplo:" COR_RESET " cesar cifrar -t ABC 3\n");
     } else {
-        printf("Comando desconhecido: %s\n", nome);
+        printf(COR_VERMELHO "Comando desconhecido: %s\n" COR_RESET, nome);
     }
 }
 
@@ -109,7 +123,7 @@ void cmd_ec(void) {
     char palavra[TAM];
 
     if (ler_palavra(palavra) == 0) {
-        printf("Erro: falta o texto. Uso: ec <texto>\n");
+        printf(COR_VERMELHO "Erro: falta o texto. Uso: ec <texto>\n" COR_RESET);
         return;
     }
     printf("%s", palavra);
@@ -127,26 +141,26 @@ void cmd_criar()
 
     if (ler_palavra(nome) == 0 || nome[0] == '\0')
     {
-        printf("Erro: nome do arquivo vazio. Uso: criar <arquivo> <texto>\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET "nome do arquivo vazio. Uso: criar <arquivo> <texto>\n");
         return;
     }
 
     if (tem_barra(nome) == 1)
     {
-        printf("Erro: o nome nome nao pode conter barras. \n");
+        printf(COR_VERMELHO "Erro: " COR_RESET "o nome nome nao pode conter barras. \n");
         return;
     }
     
     if(ler_palavra(palavra) == 0)
     {
-        printf("Erro: texto ausente. Uso: criar <arquivo> <texto>\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET "texto ausente. Uso: criar <arquivo> <texto>\n");
         return;
     }
 
     arquivo = fopen(nome, "w");
     {
         if(arquivo == NULL) {
-            printf("Erro: falha ao escrever arquivo %s.\n", nome);
+            printf(COR_VERMELHO "Erro: " COR_RESET "falha ao escrever arquivo %s.\n", nome);
             return;
         }
     }
@@ -167,12 +181,12 @@ void cmd_cat(){
     int letra;
 
     if (ler_palavra(nome) == 0) {
-        printf("Erro: falta o nome do arquivo. Uso: cat <arquivo>\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET "falta o nome do arquivo. Uso: cat <arquivo>\n");
         return;
     }
     arquivo = fopen(nome, "r");
     if (arquivo == NULL) {
-        printf("arquivo nao encontrado\n");
+        printf(COR_VERMELHO "arquivo nao encontrado\n" COR_RESET);
         return;
     }
     letra = fgetc(arquivo);
@@ -360,4 +374,3 @@ int main(){
     }
     return 0;
 }
-
