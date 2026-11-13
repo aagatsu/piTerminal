@@ -8,7 +8,7 @@ O programa mostra um prompt, lê o que o usuário digita, interpreta a linha com
 
 - Ana Lúcia Eller Sano - RA: 26026041 (NALUzy)
 - Ana Carolina Dias - RA: (anadsvieira)
-- Emile Cristine - RA:
+- Emile Cristine - RA: 26892562 (EmileCristine)
 - Gustavo - RA: (aagatsu)
 - João Carlin - RA: (joaocarlin-ds)
 - Thamize Muniz Bueno - RA: 26027163 (muniztb)
