@@ -24,10 +24,10 @@ gcc main.c -o main
 ## Uso
 
 ```
-./terminal
+./main
 ```
 
-No Windows, use `terminal.exe` (ou `.\terminal`, conforme o terminal).
+No Windows, use `main.exe` (ou `.\main`, conforme o terminal).
 
 O prompt aparece como `>`. Digite um comando e aperte Enter. Para sair, digite `sair`.
 
