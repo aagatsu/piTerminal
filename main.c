@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TRUE 1
-#define FALSE 0
 #define TAM 256
 
 char linha[TAM];
@@ -325,35 +323,43 @@ void cmd_cesar(){
 
 int main(){
     char comando[256];
-    int continuar = TRUE;
+    int continuar = 1;
     
     printf("==============================================================================\n");
     printf("                              MATRIX\n");
     printf("==============================================================================\n");
 
-    while (continuar == TRUE){
-        
-        printf("Terminal>");
+    printf("Terminal PI II - digite 'ajuda' para ver os comandos.\n");
+
+    while (continuar == 1) {
+        printf("> ");
         fflush(stdout);
 
-        fgets(comando, sizeof(comando), stdin);
-        comando[strcspn(comando, "\n")] = 0;
-        if (strcmp(comando, "sair") == FALSE){ 
-           printf("Encerrando terminal.");
-           continuar = FALSE;
+        if (ler_linha() == 0) {
+            break;
         }
-        else if(strcmp(comando, "ajuda") == FALSE)
-            cmd_ajuda;
-        else if(strcmp(comando, "ec") == FALSE)
+        pos = 0;
+        if (ler_palavra(comando) == 0) {
+            continue;
+        }
+
+        if (iguais(comando, "ajuda") == 1) {
+            cmd_ajuda();
+        } else if (iguais(comando, "sair") == 1) {
+            printf("Ate logo!\n");
+            continuar = 0;
+        } else if (iguais(comando, "ec") == 1) {
             cmd_ec();
-        else if(strcmp(comando, "criar") == FALSE)
+        } else if (iguais(comando, "criar") == 1) {
             cmd_criar();
-        else if(strcmp(comando, "cat") == FALSE)
+        } else if (iguais(comando, "cat") == 1) {
             cmd_cat();
-        else if(strcmp(comando, "cesar") == FALSE)
+        } else if (iguais(comando, "cesar") == 1) {
             cmd_cesar();
-        else 
-            printf("Comando desconhecido: %s (digite ajuda)\n", comando);            
+        } else {
+            printf("Comando desconhecido: %s (digite ajuda)\n", comando);
+        }
     }
     return 0;
-}   
+}
+
