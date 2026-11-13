@@ -86,13 +86,13 @@ void cmd_ajuda(void) {
 
     if (ler_palavra(nome) == 0) {
         printf(COR_VERDE "Comandos disponiveis:\n" COR_RESET);
-        printf("  " COR_CIANO "ajuda" COR_RESET " [comando]    lista os comandos ou explica um comando\n");
-        printf("  " COR_CIANO "sair" COR_RESET "               encerra o terminal\n");
-        printf("  " COR_CIANO "ec" COR_RESET " <texto>         repete o texto na tela\n");
-        printf("  " COR_CIANO "criar" COR_RESET " <arq> <txt>  cria um arquivo com o texto\n");
-        printf("  " COR_CIANO "cat" COR_RESET " <arq>          mostra o conteudo de um arquivo\n");
-        printf("  " COR_CIANO "cesar cifrar" COR_RESET "       cifra com a cifra de Cesar\n");
-        printf("  " COR_CIANO "cesar decifrar" COR_RESET "     decifra com a cifra de Cesar\n");
+        printf("  " COR_ROXO "ajuda" COR_RESET " [comando]    lista os comandos ou explica um comando\n");
+        printf("  " COR_ROXO "sair" COR_RESET "               encerra o terminal\n");
+        printf("  " COR_ROXO "ec" COR_RESET " <texto>         repete o texto na tela\n");
+        printf("  " COR_ROXO "criar" COR_RESET " <arq> <txt>  cria um arquivo com o texto\n");
+        printf("  " COR_ROXO "cat" COR_RESET " <arq>          mostra o conteudo de um arquivo\n");
+        printf("  " COR_ROXO "cesar cifrar" COR_RESET "       cifra com a cifra de Cesar\n");
+        printf("  " COR_ROXO "cesar decifrar" COR_RESET "     decifra com a cifra de Cesar\n");
     } else if (iguais(nome, "ajuda") == 1) {
         printf(COR_VERDE "Sintaxe:" COR_RESET " ajuda ou ajuda <comando>\n");
         printf(COR_AMARELO "Exemplo:" COR_RESET " ajuda cesar\n");
