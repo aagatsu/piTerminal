@@ -123,7 +123,7 @@ void cmd_ec(void) {
     char palavra[TAM];
 
     if (ler_palavra(palavra) == 0) {
-        printf(COR_VERMELHO "Erro: falta o texto. Uso: ec <texto>\n" COR_RESET);
+        printf(COR_VERMELHO COR_VERMELHO "Erro: " COR_RESET " falta o texto. Uso: ec <texto>\n" COR_RESET);
         return;
     }
     printf("%s", palavra);
@@ -248,7 +248,7 @@ void cesar_arquivo(char nome[], int deslocamento, int decifrar) {
 
     entrada = fopen(nome, "r");
     if (entrada == NULL) {
-        printf("Erro: arquivo nao encontrado.\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET " arquivo nao encontrado.\n");
         return;
     }
     if (decifrar == 1) {
@@ -258,7 +258,7 @@ void cesar_arquivo(char nome[], int deslocamento, int decifrar) {
     }
     saida = fopen(nome_saida, "w");
     if (saida == NULL) {
-        printf("Erro: nao foi possivel criar %s.\n", nome_saida);
+        printf(COR_VERMELHO "Erro: " COR_RESET " nao foi possivel criar %s.\n", nome_saida);
         fclose(entrada);
         return;
     }
@@ -284,7 +284,7 @@ void cmd_cesar(){
     int i;
 
     if(ler_palavra(operacao) == 0){
-        printf("Erro: use 'cesar cifrar' ou 'cesar decifrar'.\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET "use 'cesar cifrar' ou 'cesar decifrar'.\n");
         return;
     }
     if (iguais(operacao, "cifrar") == 1) {
@@ -292,7 +292,7 @@ void cmd_cesar(){
     } else if (iguais(operacao, "decifrar") == 1) {
         decifrar = 1;
     } else {
-        printf("Erro: use 'cesar cifrar' ou 'cesar decifrar'.\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET " use 'cesar cifrar' ou 'cesar decifrar'.\n");
         return;
     }
 
@@ -302,20 +302,20 @@ void cmd_cesar(){
     tem_sobra = ler_palavra(sobra);
 
     if (tem_modo == 0 || tem_alvo == 0 || tem_desl == 0 || tem_sobra == 1) {
-        printf("Erro: numero de argumentos incorreto.\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET " numero de argumentos incorreto.\n");
         printf("Uso: cesar %s -t \"texto\" <deslocamento>\n", operacao);
         printf("     (texto com espacos deve ficar entre aspas)\n");
         return;
     }
 
     if (iguais(modo, "-t") == 0 && iguais(modo, "-f") == 0) {
-        printf("Erro: use -t (texto) ou -f (arquivo).\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET " use -t (texto) ou -f (arquivo).\n");
         return;
     }
 
     deslocamento = converter_numero(desl_texto);
     if (deslocamento < 0 || deslocamento > 25) {
-        printf("Erro: deslocamento deve ser um numero de 0 a 25.\n");
+        printf(COR_VERMELHO "Erro: " COR_RESET " deslocamento deve ser um numero de 0 a 25.\n");
         return;
     }
 
